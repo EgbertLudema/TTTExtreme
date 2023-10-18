@@ -1,0 +1,208 @@
+:root{
+    --black: #000;
+    --dark: #262626;
+    --white: #fff;
+    --light_gray: #e3e3e3;
+    --gray: #666;
+    --dark_blue: #000a56;
+}
+/* Default */
+/* body{
+    background-color: var(--white);
+    color: var(--black);
+}
+button{
+    background-color: #3265a8;
+    border: none;
+    color: var(--white);
+}
+#menu{
+    background-color: var(--white);
+}
+.select_players_form{
+    background-color: var(--white);
+}
+.select_players_form select, .select_players_form input{
+    background-color: var(--white);
+    color: var(--black);
+}
+.player{
+    background-color: var(--white);
+}
+#current-player-info{
+    background-color: var(--white);
+}
+.half-width-container{
+    background-color: var(--light_gray);
+    color: var(--white);
+}
+#current-player-img img{
+    background-color: var(--white);
+}
+.change-players form{
+    background-color: var(--white);
+}
+#big-board{
+    background-color: var(--light_gray);
+    border: 10px solid var(--light_gray);
+}
+.cell{
+    background-color: var(--light_gray);
+    border: 1px solid var(--black);
+}
+.winner-overlay, .draw-overlay{
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.selectable-cell{
+    background-color: #999;
+} */
+/* Dark mode */
+body.dark-mode{
+    background-color: #353c47;
+    color: var(--white);
+}
+.dark-mode button{
+    background-color: #fba92c;
+    color: #fbf481;
+}
+.dark-mode #menu{
+    background-color: #101216;
+}
+.dark-mode .select_players_form{
+    background-color: var(--dark);
+}
+.dark-mode .select_players_form select, .dark-mode  .select_players_form input{
+    background-color: #355fac;
+    color: #e39c33;
+}
+.dark-mode .player{
+    background-color: var(--dark);
+}
+.dark-mode #current-player-info{
+    background-color: var(--dark);
+}
+.dark-mode .half-width-container{
+    background-color: #fffffd;
+    color: #262626;
+}
+.dark-mode #current-player-img img{
+    background-color: var(--light_gray);
+}
+.dark-mode .change-players form{
+    background-color: var(--dark);
+}
+.dark-mode #big-board{
+    background-color: var(--dark);
+    border: 10px solid var(--dark);
+}
+.dark-mode .cell{
+    background-color: var(--light_gray);
+    border: 1px solid var(--black);
+}
+.dark-mode .winner-overlay, .draw-overlay{
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.dark-mode .selectable-cell{
+    background-color: #909090;
+}
+/* Purple mode */
+/* 
+Purple: #845EC2
+Pink: F3C5FF
+Green: 00C9A7
+White-yellow: #FEFEDF
+*/
+body.purple-mode{
+    background-color: #0518a9;
+    color: #e39c33;
+}
+.purple-mode button{
+    background-color: #fba92c;
+    color: #fbf481;
+}
+.purple-mode .select_players_form{
+    background-color: var(--dark_blue);
+}
+.purple-mode .select_players_form select, .purple-mode .select_players_form input{
+    background-color: #355fac;
+    color: #e39c33;
+}
+.purple-mode .player{
+    background-color: var(--dark_blue);
+}
+.purple-mode #current-player-info{
+    background-color: var(--dark_blue);
+}
+.purple-mode .half-width-container{
+    background-color: #e39c33;
+    color: #fbf481;
+}
+.purple-mode #current-player-img img{
+    background-color: #fffbbf;
+}
+.purple-mode .change-players form{
+    background-color: var(--dark_blue);
+}
+.purple-mode #big-board{
+    background-color: var(--dark_blue);
+    border: 10px solid var(--dark_blue);
+}
+.purple-mode .cell{
+    background-color: #fffbbf;
+    border: 1px solid var(--dark_blue);
+}
+.purple-mode .winner-overlay, .draw-overlay{
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.purple-mode .selectable-cell{
+    background-color: #e39c33;
+}
+/* Old school mode */
+body.oldSchool-mode{
+    background-color: #0518a9;
+    color: #e39c33;
+}
+.oldSchool-mode button{
+    background-color: #fba92c;
+    color: #fbf481;
+}
+.oldSchool-mode #menu{
+    background-color: var(--dark_blue);
+}
+.oldSchool-mode .select_players_form{
+    background-color: var(--dark_blue);
+}
+.oldSchool-mode .select_players_form select, .oldSchool-mode .select_players_form input{
+    background-color: #355fac;
+    color: #e39c33;
+}
+.oldSchool-mode .player{
+    background-color: var(--dark_blue);
+}
+.oldSchool-mode #current-player-info{
+    background-color: var(--dark_blue);
+}
+.oldSchool-mode .half-width-container{
+    background-color: #e39c33;
+    color: #fbf481;
+}
+.oldSchool-mode #current-player-img img{
+    background-color: #fffbbf;
+}
+.oldSchool-mode .change-players form{
+    background-color: var(--dark_blue);
+}
+.oldSchool-mode #big-board{
+    background-color: var(--dark_blue);
+    border: 10px solid var(--dark_blue);
+}
+.oldSchool-mode .cell{
+    background-color: #fffbbf;
+    border: 1px solid var(--dark_blue);
+}
+.oldSchool-mode .winner-overlay, .draw-overlay{
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.oldSchool-mode .selectable-cell{
+    background-color: #e39c33;
+}

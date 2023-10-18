@@ -1,0 +1,22 @@
+.menu ul{
+    margin-block: 0;
+    padding-inline: 0;
+    list-style: none;
+    overflow: hidden;
+}
+.menu li {
+    float: left;
+    margin: 5px 10px;
+}
+.menu li:hover{
+    scale: 0.94;
+    transition: all 0.3 ease;
+}
+.menu li a{
+    display: block;
+    text-decoration: none;
+    height: 40px;
+}
+.menu .menu_img{
+    max-height: 40px;
+}

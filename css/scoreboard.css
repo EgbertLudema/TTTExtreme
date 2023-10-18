@@ -1,0 +1,28 @@
+#scoreboard-table{
+    background-color: #000a56;
+    margin: 20px;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+#scoreboard-table thead{
+    font-size: 22px;
+}
+#scoreboard-table td, #scoreboard-table th{
+    padding: 5px;
+}
+#scoreboard-table thead th{
+    border-style: solid;
+}
+#scoreboard-table td {
+    border-style: dotted;
+}
+.sort-buttons button{
+    font-size: 16px;
+    padding: 8px;
+}
+.sort-buttons .sort-button.active{
+    scale: 0.93;
+    transition: all 0.3s ease;
+    background-color: #fbf481;
+    color: #fba92c;
+}

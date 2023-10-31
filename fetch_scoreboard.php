@@ -1,16 +1,7 @@
 <?php
     header('Content-Type: application/json');
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "tttextreme";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if ($conn->connect_error) {
-        die(json_encode(array("error" => "Connection failed: " . $conn->connect_error)));
-    }
+    require_once "dbconfig.php";
 
     $sql = "SELECT player_name, wins, losses, draws FROM scoreboard ORDER BY wins DESC";
     $result = $conn->query($sql);

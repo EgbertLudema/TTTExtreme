@@ -28,11 +28,11 @@ function populateScoreboard(data) {
         const totalGames = parseInt(row.wins) + parseInt(row.losses) + parseInt(row.draws);
 
         // Calculate the win percentage
-        const winPercentRaw = totalGames === 0 ? 0 : ((parseInt(row.wins) / (parseInt(row.wins) + parseInt(row.losses))) * 100);
+        const winPercentRaw = totalGames === 0 ? 0 : ((parseInt(row.wins) / totalGames) * 100);
         const winPercent = winPercentRaw % 1 === 0 ? Math.floor(winPercentRaw) : winPercentRaw.toFixed(2);
 
         // Create an array for the column data, and append "%" to winPercent
-        const columns = [index + 1, row.player_name, row.wins, row.losses, row.draws, totalGames, winPercent + "%"];
+        const columns = [index + 1, row.username, row.wins, row.losses, row.draws, totalGames, winPercent + "%"];  // Changed 'row.player_name' to 'row.username'
 
         columns.forEach((col) => {
             const td = document.createElement("td");

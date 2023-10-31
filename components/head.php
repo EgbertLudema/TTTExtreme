@@ -6,4 +6,5 @@
 	<link rel="stylesheet" type="text/css" href="./css/color_modes.css">
 	<link rel="stylesheet" type="text/css" href="./css/menu.css"> 
 	<link rel="stylesheet" type="text/css" href="./css/scoreboard.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>

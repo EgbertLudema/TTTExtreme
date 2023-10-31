@@ -10,7 +10,7 @@
         $password = $_POST['password'];
 
         // Fetch hashed password from database
-        $sql = "SELECT id, password FROM users WHERE username = ?";
+        $sql = "SELECT * FROM users WHERE username = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $username);
         $stmt->execute();
@@ -19,7 +19,8 @@
 
         // Verify password
         if (password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['id'];
+            unset($user['password']);
+            $_SESSION['user'] = $user;
             header('Location: index.php');
         } else {
             echo "Invalid credentials";
@@ -30,14 +31,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login - TTTExtreme</title>
+    <link rel="stylesheet" type="text/css" href="./css/login.css">
 </head>
 <body>
-    <form method="post" action="login.php">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="submit" value="Login">
-    </form>
-    <a href='register.php'>Register New Account</a>
+    <div class="login-page">
+        <div class="form">
+            <div class="login">
+                <div class="login-header">
+                    <h2>LOGIN</h2>
+                    <p>Please enter your credentials to login.</p>
+                </div>
+            </div>
+            <form class="login-form" method="post" action="login.php">
+                <input type="text" name="username" placeholder="Username" autocomplete="off" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+                <p class="message">Not registered? <a href="register.php">Create an account</a></p>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

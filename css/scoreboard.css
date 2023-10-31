@@ -1,3 +1,11 @@
+button{
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-family: 'VT323', monospace;
+    font-size: 28px;
+    padding: 10px;
+    font-weight: bold;
+}
 #scoreboard-table{
     background-color: #000a56;
     margin: 20px;

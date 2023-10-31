@@ -3,7 +3,11 @@
 
     require_once "dbconfig.php";
 
-    $sql = "SELECT player_name, wins, losses, draws FROM scoreboard ORDER BY wins DESC";
+    // Use INNER JOIN to get the related username from the users table
+    $sql = "SELECT scoreboard.id, scoreboard.wins, scoreboard.losses, scoreboard.draws, users.username 
+            FROM scoreboard 
+            INNER JOIN users ON scoreboard.user_id = users.id 
+            ORDER BY scoreboard.wins DESC";
     $result = $conn->query($sql);
 
     $data = array();

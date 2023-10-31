@@ -3,7 +3,7 @@
 <?php
     require_once "./components/head.php";
 ?>
-<body>
+<body class="oldSchool-mode">
     <?php
     require_once "./components/menu.php";
     ?>

@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		currentPlayerElement.appendChild(imgElement);
 
 		// Update current player name
-		currentPlayerNameElement.innerText = currentPlayer === "X" ? '<?php echo $_SESSION["username"]; ?>' : '<?php echo $_SESSION["player2_username"]; ?>';
+		currentPlayerNameElement.innerText = currentPlayer === "X" ? player1.username : player2.username;
 	}
 
 	// Function to update scores via AJAX

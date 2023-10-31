@@ -52,6 +52,7 @@
         </form>
     </div>
 
+
     <!-- Game board -->
     <div class="container">
         <div id="current-player-info">

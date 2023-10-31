@@ -17,6 +17,7 @@
         // Verify Player 2's password
         if (password_verify($player2_password, $player2['password'])) {
             $_SESSION['player2_id'] = $player2['id'];
+            $_SESSION['player2_username'] = $player2_username;
             header('Location: game.php');
         } else {
             echo "Invalid credentials for Player 2";

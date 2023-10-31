@@ -20,7 +20,7 @@
         // Verify password
         if (password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
-            header('Location: game.php');
+            header('Location: index.php');
         } else {
             echo "Invalid credentials";
         }
@@ -38,5 +38,6 @@
         <input type="password" name="password" placeholder="Password" required>
         <input type="submit" value="Login">
     </form>
+    <a href='register.php'>Register New Account</a>
 </body>
 </html>

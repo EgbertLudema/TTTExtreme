@@ -14,6 +14,7 @@
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ss", $username, $hashed_password);
         $stmt->execute();
+        header('Location: login.php');
     }
 ?>
 
@@ -28,5 +29,6 @@
         <input type="password" name="password" placeholder="Password" required>
         <input type="submit" value="Register">
     </form>
+    <p>Already have a account, </p><a href='login.php'>login</a>
 </body>
 </html>

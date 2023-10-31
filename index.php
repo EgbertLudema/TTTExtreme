@@ -22,13 +22,13 @@
     <h1>Welcome, <?php echo $_SESSION['username']; ?>!</h1>
 
     <!-- Option 1: Login form for Player 2 and Registration Button -->
-    <h2>Option 1: Invite a Friend to Play</h2>
-    <form method="post" action="start_game.php">
+    <h2>Add second local player</h2>
+    <form method="post" action="local_player_2.php">
         <input type="text" name="player2_username" placeholder="Player 2 Username" required>
         <input type="password" name="player2_password" placeholder="Player 2 Password" required>
         <input type="submit" value="Start Game">
     </form>
-    <button onclick="window.location.href='register.php'">Register New Account</button>
+    <a href='register.php'>Register New Account</a>
 
     <!-- Display current players -->
     <div class="current-players">

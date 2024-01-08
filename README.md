@@ -17,5 +17,5 @@ I'm planning on adding these features in the future:
 
 - Import all files into your server or localhost
 - Import the tttextreme.sql file into your database
-
-Enjoy!
+- Create a account(guest option hasn't been added yet)
+- Enjoy!

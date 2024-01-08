@@ -16,6 +16,6 @@ I'm planning on adding these features in the future:
 <h1>Import guide:</h1>
 
 - Import all files into your server or localhost
-- Import the tttextreme. into your database
+- Import the tttextreme.sql file into your database
 
 Enjoy!

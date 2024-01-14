@@ -7,16 +7,32 @@
 .menu li {
     float: left;
     margin: 5px 10px;
+    transition: all 0.3s ease;
 }
 .menu li:hover{
     scale: 0.94;
-    transition: all 0.3 ease;
 }
 .menu li a{
-    display: block;
+    display: flex;
+    align-items: center;
     text-decoration: none;
     height: 40px;
 }
+.menu .menu-item{
+    --orange: #fba92c;
+    --darkblue: #21346b;
+    --yellow: #fbf481;
+    text-transform: uppercase;
+    font-size: 50px;
+    line-height: 35px;
+    color: #355fac;
+    -webkit-text-stroke: 3px var(--darkblue);
+    filter: drop-shadow(0px -2px 1px var(--orange)) drop-shadow(0px 0px 1px var(--orange)) drop-shadow(0px 2px 2px var(--yellow));
+}
 .menu .menu_img{
     max-height: 40px;
+}
+.discord-btn .discord-img{
+    height: 32px;
+
 }

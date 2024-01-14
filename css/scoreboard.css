@@ -1,11 +1,3 @@
-button{
-    margin-top: 10px;
-    text-transform: uppercase;
-    font-family: 'VT323', monospace;
-    font-size: 28px;
-    padding: 10px;
-    font-weight: bold;
-}
 #scoreboard-table{
     background-color: #000a56;
     margin: 20px;
@@ -13,7 +5,7 @@ button{
     border-collapse: collapse;
 }
 #scoreboard-table thead{
-    font-size: 22px;
+    font-size: 28px;
 }
 #scoreboard-table td, #scoreboard-table th{
     padding: 5px;
@@ -21,12 +13,18 @@ button{
 #scoreboard-table thead th{
     border-style: solid;
 }
+#scoreboard-table tbody{
+    font-size: 24px;
+}
 #scoreboard-table td {
     border-style: dotted;
 }
+.sort-buttons{
+    margin-top: 10px;
+}
 .sort-buttons button{
-    font-size: 16px;
-    padding: 8px;
+    font-size: 22px;
+    padding: 10px;
 }
 .sort-buttons .sort-button.active{
     scale: 0.93;

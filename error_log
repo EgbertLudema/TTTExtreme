@@ -1,0 +1,37 @@
+[01-Dec-2023 09:16:49 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/tttextre/public_html/register.php:55) in /home3/tttextre/public_html/register.php on line 60
+[01-Dec-2023 09:20:05 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/tttextre/public_html/register.php:54) in /home3/tttextre/public_html/register.php on line 59
+[01-Dec-2023 09:24:59 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/tttextre/public_html/register.php:54) in /home3/tttextre/public_html/register.php on line 56
+[01-Dec-2023 09:25:10 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/tttextre/public_html/register.php:54) in /home3/tttextre/public_html/register.php on line 56
+[01-Dec-2023 09:27:35 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/tttextre/public_html/register.php:55) in /home3/tttextre/public_html/register.php on line 57
+[01-Dec-2023 09:28:46 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/tttextre/public_html/register.php:55) in /home3/tttextre/public_html/register.php on line 57
+[01-Dec-2023 09:28:46 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/tttextre/public_html/register.php:55) in /home3/tttextre/public_html/register.php on line 62
+[01-Dec-2023 09:30:43 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/tttextre/public_html/register.php:55) in /home3/tttextre/public_html/register.php on line 57
+[01-Dec-2023 09:30:43 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/tttextre/public_html/register.php:55) in /home3/tttextre/public_html/register.php on line 62
+[01-Dec-2023 09:32:07 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/tttextre/public_html/register.php:58) in /home3/tttextre/public_html/register.php on line 60
+[01-Dec-2023 09:32:07 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/tttextre/public_html/register.php:58) in /home3/tttextre/public_html/register.php on line 65
+[01-Dec-2023 09:44:42 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/tttextre/public_html/register.php on line 45
+[01-Dec-2023 09:44:53 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/tttextre/public_html/register.php on line 45
+[01-Dec-2023 09:45:27 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/tttextre/public_html/register.php on line 45
+[01-Dec-2023 09:46:33 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/tttextre/public_html/register.php on line 45
+[01-Dec-2023 09:56:19 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/tttextre/public_html/register.php:29) in /home3/tttextre/public_html/register.php on line 34
+[01-Dec-2023 09:58:38 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/tttextre/public_html/register.php:67) in /home3/tttextre/public_html/register.php on line 72
+[01-Dec-2023 09:59:17 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/tttextre/public_html/register.php:67) in /home3/tttextre/public_html/register.php on line 72
+[01-Dec-2023 10:01:58 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/tttextre/public_html/register.php:70) in /home3/tttextre/public_html/register.php on line 75
+[05-Dec-2023 06:03:37 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home3/tttextre/public_html/searchUsers.php:6
+Stack trace:
+#0 {main}
+  thrown in /home3/tttextre/public_html/searchUsers.php on line 6
+[05-Dec-2023 06:03:37 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home3/tttextre/public_html/searchUsers.php:6
+Stack trace:
+#0 {main}
+  thrown in /home3/tttextre/public_html/searchUsers.php on line 6
+[05-Dec-2023 06:03:37 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home3/tttextre/public_html/searchUsers.php:6
+Stack trace:
+#0 {main}
+  thrown in /home3/tttextre/public_html/searchUsers.php on line 6
+[05-Dec-2023 06:10:08 America/Chicago] PHP Warning:  error_log(): TCP/IP option not available! in /home3/tttextre/public_html/sendFriendRequest.php on line 7
+[05-Dec-2023 06:12:12 America/Chicago] UserID:  - FriendID: 2
+[05-Dec-2023 06:13:05 America/Chicago] UserID: 11 - FriendID: 2
+[05-Dec-2023 08:12:16 America/Chicago] UserID:  - FriendID: 3
+[12-Jan-2024 16:34:04 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/tttextre/public_html/verify_email.php:19) in /home3/tttextre/public_html/verify_email.php on line 20
+[12-Jan-2024 16:34:06 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/tttextre/public_html/verify_email.php:19) in /home3/tttextre/public_html/verify_email.php on line 20

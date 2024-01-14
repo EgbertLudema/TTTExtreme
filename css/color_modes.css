@@ -201,7 +201,7 @@ body.oldSchool-mode{
     border: 1px solid var(--dark_blue);
 }
 .oldSchool-mode .winner-overlay, .draw-overlay{
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.925);
 }
 .oldSchool-mode .selectable-cell{
     background-color: #e39c33;

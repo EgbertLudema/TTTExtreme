@@ -1,6 +1,16 @@
 <?php
     // Initialize session
     session_start();
+    
+    if (isset($_SESSION['message'])) {
+        echo "<script type='text/javascript'>alert('" . $_SESSION['message'] . "');</script>";
+        unset($_SESSION['message']);
+    }
+
+    if (isset($_SESSION['error'])) {
+        echo "<script type='text/javascript'>alert('" . $_SESSION['error'] . "');</script>";
+        unset($_SESSION['error']);
+    }
 
     // Include database connection
     include('dbconfig.php');
@@ -9,7 +19,7 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        // Fetch hashed password from database
+        // Fetch user data from database
         $sql = "SELECT * FROM users WHERE username = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $username);
@@ -17,12 +27,26 @@
         $result = $stmt->get_result();
         $user = $result->fetch_assoc();
 
-        // Verify password
-        if (password_verify($password, $user['password'])) {
-            unset($user['password']);
-            $_SESSION['user'] = $user;
-            header('Location: index.php');
+        if ($user) {
+            // Check if password is correct
+            if (password_verify($password, $user['password'])) {
+                // Check if email is verified
+                if ($user['is_email_verified'] == 1) {
+                    // Email is verified, proceed to log in
+                    unset($user['password']); // It's a good practice to unset the password
+                    $_SESSION['user'] = $user;
+                    header('Location: index.php'); // Redirect to the home page or dashboard
+                    exit;
+                } else {
+                    // Email is not verified
+                    echo "<script type='text/javascript'>alert('Verify your email before logging in. Sometimes the verification link ends up in your spam!');</script>";
+                }
+            } else {
+                // Incorrect password
+                echo "Invalid credentials";
+            }
         } else {
+            // User does not exist
             echo "Invalid credentials";
         }
     }
@@ -36,6 +60,7 @@
     <title>Login - TTTExtreme</title>
     <link rel="stylesheet" type="text/css" href="./css/login.css">
 </head>
+
 <body>
     <div class="login-page">
         <div class="form">
@@ -52,6 +77,9 @@
                 <p class="message">Not registered? <a href="register.php">Create an account</a></p>
             </form>
         </div>
+    </div>
+    <div class="join-discord">
+        <a class="discord-btn" href="https://discord.gg/9QdzJqwW6A" target="_blank"><img class="discord-img" src="./images/Discord_icon_clyde_white_RGB.svg" alt="join-discord"></a>
     </div>
 </body>
 </html>

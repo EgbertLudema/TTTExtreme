@@ -1,0 +1,90 @@
+html{
+    font-family: 'VT323', monospace ;
+}
+body{
+    background-color: #000a56;
+    color: #e39c33;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.register-page {
+    width: 360px;
+    margin: auto;
+}
+.register-page .form .register {
+    margin-top: -31px;
+    margin-bottom: 26px;
+}
+.form {
+    position: relative;
+    z-index: 1;
+    background: #0518a9;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 4px #FFB300;
+}
+.form input {
+    outline: 0;
+    background: #000a56;
+    color: #fbf481;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.form input::placeholder {
+    color: #fbf581a1;
+}
+.form button {
+    text-transform: uppercase;
+    outline: 0;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    background-color: #c88828;
+    color: #fbf481;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3 ease;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+.form button:hover{
+    background-color: #FFB300;
+}
+.form .message {
+    margin: 15px 0 0;
+    color: #fbf481;
+    font-size: 12px;
+}
+.form .message a {
+    color: #e39c33;
+    text-decoration: none;
+}
+/* Discord button */
+.join-discord {
+    position: absolute;
+    bottom: 0;
+    left: 8vw;
+    background: #5865F2;
+    border-radius: 10px 10px 0px 0px;
+}
+.join-discord:hover .discord-btn{
+    padding-bottom: 20px;
+}
+.join-discord .discord-btn{
+    padding: 10px;
+    display: block;
+    transition: all 0.3s ease;
+}
+.join-discord .discord-img{
+    width: 40px;
+}

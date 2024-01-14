@@ -1,0 +1,119 @@
+#friendListContainer {
+    position: fixed;
+    bottom: 0px;
+    right: 10px;
+    background-color: #000a56;
+    padding: 10px;
+    box-shadow: 0px -1px 20px 0px #FFB300;
+    z-index: 1000;
+    max-height: 420px;
+    overflow-y: auto;
+    width: 250px;
+    overflow-x: hidden;
+}
+#toggleFriendList {
+    background: #000a56;
+    color: #fba92c;
+    padding: 5px 10px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.friendListContent{
+    margin-top: 10px;
+}
+#friendSearch {
+    width: calc(100% - 20px);
+    padding: 10px 10px;
+    font-size: 16px;
+    border: none;
+    background-color: #fbf481;
+    color: #0518a9;
+    margin-bottom: 5px;
+    background-image: url(../img/search.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+    background-origin: content-box;
+}
+.friend{
+    margin: 5px 0;
+    background-color: #0518a9;
+    font-size: 20px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.friend span{
+    font-size: 14px;
+}
+.friendlist-content-btn{
+    margin: 0;
+    font-size: 18px;
+    padding: 8px;
+}
+.result-icon {
+    width: 24px;
+}
+#friendListTabs{
+    display: flex;
+    margin: 10px 0px;
+    width: 100%;
+    justify-content: space-between;
+}
+.tab-btn{
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border: none;
+    text-transform: none;
+    font-weight: unset;
+    font-size: unset;
+}
+.tab-btn.active{
+    background-color: #fbf476;
+    scale: 0.9;
+}
+.tab-btn img{
+    width: 40px;
+    padding: 10px;
+    height: 40px;
+}
+.tab-content{
+    min-height: 300px;
+}
+.tab-content#incoming .friendlist-content-btn {
+    font-size: 14px;
+    padding: 6px;
+}
+.no-items-message {
+    color: #fbf481;
+    text-align: center;
+    padding: 10px;
+}
+.tab-content .request{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background-color: #0518a9;
+    margin-bottom: 5px;
+}
+/* Custom scrollbar */
+#friendListContainer {
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #fba92c;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: #c4892f;
+    }
+}

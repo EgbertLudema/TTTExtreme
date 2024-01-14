@@ -32,6 +32,9 @@
         </tbody>
     </table>
     </div>
+    <?php
+    require_once "./friendlist/friendlist.php";
+    ?>
     <script src="js/scoreboard.js"></script>
     <script src="js/color_modes.js"></script>
 </body>

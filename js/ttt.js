@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 	let currentPlayer = "X";
+	let lastStartingPlayer = "X";
 	let bigBoardState = Array(9).fill(null);
 	let smallBoardsState = Array(9).fill(null).map(() => Array(9).fill(null));
 	let nextBoard = null;
@@ -53,17 +54,17 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	// Function to update scores via AJAX
-    function updateScore(winner, loser, draw1, draw2) {
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", "update_score.php", true);
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	function updateScore(winner, loser, draw1, draw2) {
+		const xhr = new XMLHttpRequest();
+		xhr.open("POST", "update_score.php", true);
+		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-        if (winner && loser) {
-            xhr.send(`winner=${winner}&loser=${loser}`);
-        } else if (draw1 && draw2) {
-            xhr.send(`draw1=${draw1}&draw2=${draw2}`);
-        }
-    }
+		if (winner && loser) {
+			xhr.send(`winner=${winner}&loser=${loser}`);
+		} else if (draw1 && draw2) {
+			xhr.send(`draw1=${draw1}&draw2=${draw2}`);
+		}
+	}
   
 	// Initialize the board UI and add event listeners
 	const bigBoard = document.getElementById("big-board");
@@ -154,34 +155,39 @@ document.addEventListener("DOMContentLoaded", function () {
 	
 		// Check for win on the big board
 		if (checkWin(bigBoardState)) {
-			alert(`${currentPlayer} wins!`);
-			updateScore(currentPlayer === "X" ? player1 : player2, currentPlayer === "O" ? player1 : player2, null, null);
-			resetGame(currentPlayer);
+			updateScore(currentPlayer === "X" ? player1.id : player2.id, currentPlayer === "O" ? player1.id : player2.id, null, null);
+			showOverlay(`${currentPlayer === "X" ? player1.username : player2.username} wins!`);
+			startConfetti();
 			return;
-		} 
-		// Check for an unavoidable draw on the big board
-		else if (checkForUnavoidableDraw()) {
-			alert("The game is a draw!");
-			updateScore(null, null, player1, player2);
-			resetGame();
+		}
+
+		// Check for a draw only when all boards are completed without a winner
+		if (completedBoards.size === 9 && !checkWin(bigBoardState)) {
+			updateScore(null, null, player1.id, player2.id);
+			showOverlay("The game is a draw!");
 			return;
 		}
 	
 		// Toggle player and set next board
 		currentPlayer = currentPlayer === "X" ? "O" : "X";
-		const currentName = currentPlayer === "X" ? player1 : player2;
+
+		// Set the next board to the index of the cell that was just played
+		nextBoard = cellIndex;
+
+		// If the next board is completed, set nextBoard to null to allow choosing any non-completed board
+		if (completedBoards.has(nextBoard)) {
+			nextBoard = null;
+		}
 
 		// Update the current player display
 		updateCurrentPlayerDisplay();
 
-		nextBoard = completedBoards.has(cellIndex) ? null : cellIndex;
-	
 		// Update selectable boards
 		updateSelectableBoards();
-	}	
+	}
   
 	function updateSelectableBoards() {
-		// Remove 'selectable' and 'selectable-cell' classes first
+		// First, remove 'selectable' and 'selectable-cell' classes
 		for (let i = 0; i < 9; i++) {
 			const smallBoardElement = document.getElementById(`board-${i}`);
 			smallBoardElement.classList.remove("selectable");
@@ -191,7 +197,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		}
 	
-		// If the next board is specified and not completed, only it is selectable
+		// If the next board is not null or completed, only that board is selectable
 		if (nextBoard !== null && !completedBoards.has(nextBoard)) {
 			const smallBoardElement = document.getElementById(`board-${nextBoard}`);
 			smallBoardElement.classList.add("selectable");
@@ -201,36 +207,21 @@ document.addEventListener("DOMContentLoaded", function () {
 					cellElement.classList.add("selectable-cell");
 				}
 			}
-			return;
 		}
-	
-		// If nextBoard is null or completed, all non-completed boards are selectable
-		for (let i = 0; i < 9; i++) {
-			if (!completedBoards.has(i)) {
-				const smallBoardElement = document.getElementById(`board-${i}`);
-				smallBoardElement.classList.add("selectable");
-				for (let j = 0; j < 9; j++) {
-					const cellElement = document.getElementById(`cell-${i}-${j}`);
-					if (smallBoardsState[i][j] === null) {
-						cellElement.classList.add("selectable-cell");
+		// If the next board is null or completed, all non-completed boards are selectable
+		else {
+			for (let i = 0; i < 9; i++) {
+				if (!completedBoards.has(i)) {
+					const smallBoardElement = document.getElementById(`board-${i}`);
+					smallBoardElement.classList.add("selectable");
+					for (let j = 0; j < 9; j++) {
+						const cellElement = document.getElementById(`cell-${i}-${j}`);
+						if (smallBoardsState[i][j] === null) {
+							cellElement.classList.add("selectable-cell");
+						}
 					}
 				}
 			}
-		}
-
-		if (nextBoard !== null && !completedBoards.has(nextBoard)) {
-			const smallBoardElement = document.getElementById(`board-${nextBoard}`);
-			smallBoardElement.classList.add("selectable");
-			for (let j = 0; j < 9; j++) {
-				const cellElement = document.getElementById(`cell-${nextBoard}-${j}`);
-				if (smallBoardsState[nextBoard][j] === null) {
-					cellElement.classList.add("selectable-cell");
-				}
-			}
-			if (isBoardFull(smallBoardsState[nextBoard])) {
-				nextBoard = null;  // Allow to play on any board
-			}
-			return;
 		}
 	}
 
@@ -255,45 +246,15 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		}
 	  	return false;
-	}
-
-	// Checking all possibilities of the bigboard for a player to win, if there are no possibilities for a player to win it returns true
-	function checkForUnavoidableDraw() {
-		const lines = [
-			[0, 1, 2],
-			[3, 4, 5],
-			[6, 7, 8],
-			[0, 3, 6],
-			[1, 4, 7],
-			[2, 5, 8],
-			[0, 4, 8],
-			[2, 4, 6],
-		];
-	
-		for (let [a, b, c] of lines) {
-			if (
-				(bigBoardState[a] === null || bigBoardState[a] === "draw") &&
-				(bigBoardState[b] === null || bigBoardState[b] === "draw") &&
-				(bigBoardState[c] === null || bigBoardState[c] === "draw")
-			) {
-				// There is still a possible win for someone
-				return false;
-			}
-		}
-		return true; // If we reached here, then a draw is inevitable
 	}		
 
-	function resetGame(winner = 0) {
-		// Update the last starting player based on the game's outcome
-		if (winner) {
-			lastStartingPlayer = winner;
-		} else { // It's a draw
-			lastStartingPlayer = lastStartingPlayer === "X" ? "O" : "X";
-		}
-		
-		// Set the current player to the last starting player for the next game
+	function resetGame() {
+		// Alternate the starting player for the next game
+		lastStartingPlayer = lastStartingPlayer === "X" ? "O" : "X";
+	
+		// Set the current player to the new starting player
 		currentPlayer = lastStartingPlayer;
-
+	
 		// Reset game state variables
 		bigBoardState = Array(9).fill(null);
 		smallBoardsState = Array(9).fill(null).map(() => Array(9).fill(null));
@@ -304,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		for (let i = 0; i < 9; i++) {
 			const smallBoardElement = document.getElementById(`board-${i}`);
 			smallBoardElement.classList.remove("completed", "selectable", "draw", "X", "O");
-			
+	
 			// Remove any overlays
 			const winnerOverlay = smallBoardElement.querySelector(".winner-overlay");
 			const drawOverlay = smallBoardElement.querySelector(".draw-overlay");
@@ -324,10 +285,55 @@ document.addEventListener("DOMContentLoaded", function () {
 	
 		// Update selectable boards
 		updateSelectableBoards();
-
+	
 		// Update the current player display after resetting
 		updateCurrentPlayerDisplay();
 	}	
+	
+	// When a game is finished the overlay shows
+	function showOverlay(message) {
+		const overlay = document.getElementById('game-overlay');
+		const resultMessageElement = document.getElementById('game-result-message');
+	
+		// Clear previous content
+		resultMessageElement.innerHTML = '';
+	
+		// Create an img element for displaying the symbol or draw image
+		const imgElement = document.createElement('img');
+		imgElement.classList.add('game-result-image');
+	
+		// Check if the game is a draw or a win
+		if (message === "The game is a draw!") {
+			// Set the src for the draw image
+			imgElement.src = 'images/Draw.png'; // Update the path as needed
+			imgElement.alt = 'Draw';
+		} else if (message.includes('wins')) {
+			// Set the src for the player's symbol image
+			imgElement.src = currentPlayer === 'X' ? 'images/X.png' : 'images/O.png'; // Update the path as needed
+			imgElement.alt = currentPlayer;
+	
+			const winningPlayerName = currentPlayer === 'X' ? player1.username : player2.username;
+			message = message.replace(currentPlayer, winningPlayerName);
+		}
+	
+		// Append the image to the result message element
+		resultMessageElement.appendChild(imgElement);
+	
+		// Create a text node for the message and append it
+		const textNode = document.createTextNode(message);
+		resultMessageElement.appendChild(textNode);
+	
+		overlay.style.display = 'flex';
+	}	
+
+	// By clicking the close butten in the overlay the overlay closes
+	document.getElementById('close-overlay-btn').addEventListener('click', hideOverlay);
+	function hideOverlay() {
+		// Reset the game based on the last game result
+		resetGame();
+		document.getElementById('game-overlay').style.display = 'none';
+		stopConfetti();
+	}
 
 	// Update selectable boards
 	updateSelectableBoards();
